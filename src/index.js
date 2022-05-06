@@ -117,9 +117,9 @@ app.delete("/todos/:id", checksExistsUserAccount, (request, response) => {
   if (todoToBeDeleted === -1)
     return response.status(404).json({ error: "Not found" });
 
-  currUser.todos.splice(users[todoToBeDeleted].todos, 1);
+  currUser.todos.splice(currUser.todos[todoToBeDeleted], 1);
 
-  return response.status(204);
+  return response.status(204).send("Deleted");
 });
 
 module.exports = app;
